@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Você ❤️</title>
+    <style>
+        body {
+            background-color: #ffdde1;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        h1 {
+            color: #d63384;
+            font-size: 28px;
+        }
+
+        #botao {
+            padding: 15px 30px;
+            font-size: 18px;
+            color: white;
+            background-color: #ff4081;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #botao:hover {
+            background-color: #e91e63;
+        }
+
+        #mensagem {
+            display: none;
+            font-size: 24px;
+            color: #c2185b;
+            margin-top: 20px;
+        }
+
+        #imagem {
+            display: none;
+            width: 300px; 
+            margin: 20px auto;
+        }
+
+        .coracao {
+            position: absolute;
+            color: red;
+            font-size: 30px;
+            animation: subir 5s linear infinite;
+        }
+
+        @keyframes subir {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Tenho algo especial para você ❤️</h1>
+    <button id="botao">Clique aqui</button>
+    <br>
+    <p id="mensagem">Você é a melhor coisa que aconteceu na minha vida! Te amo muitoo 💖</p>
+    <img id="imagem" src="surpresa.png" alt="Surpresa">
+
+    <audio id="musica" src="dandelions.mp3"></audio>
+
+    <script>
+        document.getElementById("botao").addEventListener("click", function() {
+            this.style.display = "none"; // Esconde o botão
+            document.getElementById("musica").play(); // Toca a música
+
+            // Cria os corações flutuantes
+            for (let i = 0; i < 30; i++) {
+                let coracao = document.createElement("div");
+                coracao.classList.add("coracao");
+                coracao.innerHTML = "❤️";
+                coracao.style.left = Math.random() * 100 + "vw";
+                coracao.style.animationDuration = Math.random() * 3 + 2 + "s"; // Animação entre 2 a 5 segundos
+                document.body.appendChild(coracao);
+
+                
+            }
+
+            // Mostra a imagem e a mensagem ao mesmo tempo depois de 3 segundos
+            setTimeout(() => {
+                document.getElementById("imagem").style.display = "block";
+                document.getElementById("mensagem").style.display = "block";
+            }, 3000);
+        });
+    </script>
+
+</body>
+</html>
